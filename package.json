@@ -1,0 +1,15 @@
+{
+    "name": "simple-payment-system",
+    "version": "1.0.0",
+    "description": "A simple payment system using Node.js and Express",
+    "main": "index.js",
+    "scripts": {
+      "start": "node index.js"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "express": "^4.17.1"
+    }
+  }
+  

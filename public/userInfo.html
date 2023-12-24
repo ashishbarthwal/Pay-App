@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Information</title>
+</head>
+<body>
+    <h2>User Information</h2>
+    <input type="text" id="phoneNum" placeholder="Your Phone Number">
+    <button onclick="getUserInfo()">Get Info</button>
+    <div id="userInfo"></div>
+    <script>
+        function getUserInfo() {
+            const phoneNum = document.getElementById('phoneNum').value;
+            fetch('/user/' + phoneNum)
+            .then(response => response.json())
+            .then(data => {
+                let info = 'Available Amount: ' + data.availableAmount + '<br>';
+                info += '<h3>Transactions:</h3>';
+                data.transactions.forEach(t => {
+                    info += `From: ${t.from}, To: ${t.to}, Amount: ${t.amount}<br>`;
+                });
+                document.getElementById('userInfo').innerHTML = info;
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
+</body>
+</html>
